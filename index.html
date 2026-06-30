@@ -2,409 +2,354 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <title>朱响 · 宠物行业产品经理简历</title>
+<meta name="description" content="朱响（Sonic）· 宠物行业产品经理 · 江南大学食品科学与工程 · 5年产品经验 · 供应链透明化与品牌从0到1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0a0a0a;
-    --surface: #141414;
-    --surface2: #1a1a1a;
-    --border: #2a2a2a;
-    --text: #e0e0e0;
-    --text2: #999;
-    --accent: #6c5ce7;
-    --accent2: #a29bfe;
-    --green: #00b894;
-    --tag-bg: rgba(108,92,231,0.12);
-    --radius: 16px;
-    --radius-sm: 10px;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-  }
-  .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+:root {
+  --paper: #f7f2e9;
+  --paper-deep: #efe7d8;
+  --clay: #c2562e;
+  --clay-soft: #d97b52;
+  --forest: #3c4a3e;
+  --gold: #d9a441;
+  --bg: #f7f2e9;
+  --fg: #33302b;
+  --card: #fdfaf3;
+  --secondary: #efe7d8;
+  --muted: #ece4d4;
+  --muted-fg: #7a7367;
+  --accent: #3c4a3e;
+  --accent-fg: #fbf7ef;
+  --border: #e2d8c6;
+  --radius: 12px;
+  --font-sans: "Noto Sans SC", system-ui, sans-serif;
+  --font-serif: "Noto Serif SC", serif;
+  --font-mono: "Space Grotesk", monospace;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+h1,h2,h3,h4 { font-family: var(--font-serif); }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
 
-  /* Header */
-  header {
-    padding: 100px 0 60px;
-    text-align: center;
-    position: relative;
-  }
-  header::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 50%; transform: translateX(-50%);
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(108,92,231,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  header h1 {
-    font-size: 64px;
-    font-weight: 800;
-    letter-spacing: -2px;
-    background: linear-gradient(135deg, #fff 0%, #a29bfe 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  header h1 span { color: var(--accent); }
-  header .subtitle {
-    font-size: 20px;
-    color: var(--text2);
-    margin-top: 8px;
-    font-weight: 400;
-  }
-  header .tagline {
-    font-size: 15px;
-    color: var(--text2);
-    margin-top: 16px;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.8;
-  }
-  .stats {
-    display: flex;
-    justify-content: center;
-    gap: 48px;
-    margin-top: 36px;
-    flex-wrap: wrap;
-  }
-  .stat-item { text-align: center; }
-  .stat-item .num {
-    font-size: 36px;
-    font-weight: 800;
-    color: var(--accent2);
-    line-height: 1;
-  }
-  .stat-item .label { font-size: 13px; color: var(--text2); margin-top: 6px; }
+/* Sidebar */
+.sidebar {
+  position: fixed; top: 0; left: 0; bottom: 0;
+  width: 260px;
+  background: var(--fg);
+  color: #e9e2d4;
+  display: flex; flex-direction: column;
+  padding: 40px 28px;
+  z-index: 100;
+}
+.sidebar-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.sidebar-logo img { width: 40px; height: 40px; border-radius: 50%; }
+.sidebar-logo .name { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: #fff; }
+.sidebar-role { font-size: 13px; color: #a09888; margin-bottom: 16px; }
+.sidebar-quote { font-size: 12px; color: #7a7265; font-style: italic; margin-bottom: 40px; line-height: 1.6; }
+.sidebar-nav { display: flex; flex-direction: column; gap: 4px; margin-bottom: auto; }
+.sidebar-nav a {
+  color: #a09888; text-decoration: none; font-size: 14px;
+  padding: 10px 16px; border-radius: 8px; transition: all 0.2s;
+  font-family: var(--font-sans);
+}
+.sidebar-nav a:hover, .sidebar-nav a.active { background: rgba(255,255,255,0.08); color: #fff; }
+.sidebar-contact { margin-top: 32px; display: flex; flex-direction: column; gap: 10px; }
+.sidebar-contact a {
+  color: #a09888; text-decoration: none; font-size: 12px;
+  display: flex; align-items: center; gap: 8px; transition: color 0.2s;
+}
+.sidebar-contact a:hover { color: #fff; }
+.sidebar-contact .contact-icon { width: 16px; height: 16px; opacity: 0.6; }
+.sidebar-status {
+  margin-top: 16px; font-size: 11px; color: #5a8a5e;
+  display: flex; align-items: center; gap: 6px;
+}
+.sidebar-status::before {
+  content: ''; width: 6px; height: 6px; background: #5a8a5e; border-radius: 50%;
+}
 
-  /* Sections */
-  section { padding: 60px 0; }
-  .section-num {
-    font-size: 13px;
-    color: var(--accent);
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-  .section-title {
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 40px;
-    letter-spacing: -1px;
-  }
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 0 auto;
-  }
+/* Main content */
+.main-content { margin-left: 260px; }
 
-  /* About */
-  .about-text {
-    font-size: 16px;
-    color: #bbb;
-    line-height: 2;
-    max-width: 800px;
-  }
-  .about-text p { margin-bottom: 16px; }
+/* Hero section */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0.04;
+  background-image: radial-gradient(#786e5a 1px, transparent 1px);
+  background-size: 6px 6px;
+  pointer-events: none;
+}
+.hero-texture {
+  position: absolute; right: -60px; top: 50%; transform: translateY(-50%);
+  width: 480px; height: 480px; opacity: 0.12;
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 1; }
+.hero-meta { font-size: 14px; color: var(--muted-fg); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.hero-meta::before { content: ''; display: block; width: 24px; height: 1px; background: var(--clay); }
+.hero h1 {
+  font-size: 80px; font-weight: 900; letter-spacing: -2px;
+  color: var(--fg); line-height: 1.1; margin-bottom: 12px;
+}
+.hero h1 span { color: var(--clay); }
+.hero-subtitle { font-size: 20px; color: var(--muted-fg); font-weight: 500; margin-bottom: 16px; }
+.hero-desc { font-size: 15px; color: var(--muted-fg); max-width: 500px; line-height: 1.9; }
+.hero-stats { display: flex; gap: 48px; margin-top: 40px; }
+.hero-stat { text-align: left; }
+.hero-stat-num { font-size: 42px; font-weight: 800; font-family: var(--font-mono); color: var(--clay); line-height: 1; }
+.hero-stat-label { font-size: 13px; color: var(--muted-fg); margin-top: 4px; }
 
-  /* Timeline / Experience */
-  .exp-item {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 32px;
-    margin-bottom: 20px;
-    transition: border-color 0.3s;
-  }
-  .exp-item:hover { border-color: var(--accent); }
-  .exp-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-  .exp-company { font-size: 18px; font-weight: 700; }
-  .exp-role { font-size: 14px; color: var(--accent2); font-weight: 600; }
-  .exp-date {
-    font-size: 13px;
-    color: var(--text2);
-    background: var(--surface2);
-    padding: 4px 14px;
-    border-radius: 20px;
-    white-space: nowrap;
-  }
-  .exp-meta { font-size: 13px; color: var(--text2); margin-bottom: 16px; }
-  .exp-meta span { margin-right: 16px; }
-  .exp-list { list-style: none; }
-  .exp-list li {
-    position: relative;
-    padding-left: 20px;
-    margin-bottom: 10px;
-    font-size: 15px;
-    color: #bbb;
-    line-height: 1.7;
-  }
-  .exp-list li::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 10px;
-    width: 6px; height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-  }
-  .exp-list li strong { color: #ddd; }
-  .exp-note {
-    margin-top: 16px;
-    padding: 12px 16px;
-    background: var(--surface2);
-    border-radius: var(--radius-sm);
-    font-size: 13px;
-    color: var(--text2);
-    border-left: 3px solid var(--accent);
-  }
+/* Section styles */
+.section { padding: 80px 0; }
+.section-divider { height: 1px; background: var(--border); margin: 0; }
+.section-num {
+  font-size: 13px; color: var(--clay); font-family: var(--font-mono);
+  font-weight: 700; letter-spacing: 2px; margin-bottom: 8px;
+}
+.section-title {
+  font-size: 36px; font-weight: 700; margin-bottom: 48px;
+  letter-spacing: -0.5px;
+}
+.about-text p {
+  font-size: 16px; color: #5a5248; line-height: 2; margin-bottom: 20px;
+  max-width: 680px;
+}
 
-  /* Portfolio */
-  .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-    gap: 24px;
-  }
-  .portfolio-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 32px;
-    transition: border-color 0.3s, transform 0.2s;
-  }
-  .portfolio-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-  .portfolio-card h3 { font-size: 18px; margin-bottom: 4px; }
-  .portfolio-card .brand-meta { font-size: 13px; color: var(--text2); margin-bottom: 16px; }
-  .portfolio-card p { font-size: 14px; color: #aaa; margin-bottom: 12px; line-height: 1.7; }
-  .portfolio-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-  .portfolio-tags span {
-    font-size: 12px;
-    padding: 5px 12px;
-    background: var(--tag-bg);
-    color: var(--accent2);
-    border-radius: 20px;
-  }
-  .portfolio-cta {
-    margin-top: 40px;
-    text-align: center;
-  }
-  .portfolio-cta a {
-    display: inline-block;
-    padding: 14px 32px;
-    background: var(--accent);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 30px;
-    font-weight: 600;
-    font-size: 15px;
-    transition: background 0.3s, transform 0.2s;
-  }
-  .portfolio-cta a:hover { background: #7c6ff7; transform: translateY(-1px); }
+/* Experience cards */
+.exp-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+  margin-bottom: 20px;
+  transition: box-shadow 0.3s;
+}
+.exp-item:hover { box-shadow: 0 4px 24px rgba(120,110,90,0.08); }
+.exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; margin-bottom: 8px; }
+.exp-company { font-family: var(--font-serif); font-size: 19px; font-weight: 700; }
+.exp-role { font-size: 14px; color: var(--clay); font-weight: 600; margin-top: 2px; }
+.exp-date {
+  font-size: 13px; color: var(--muted-fg); background: var(--secondary);
+  padding: 4px 14px; border-radius: 20px; white-space: nowrap;
+}
+.exp-tags { font-size: 12px; color: var(--muted-fg); margin-bottom: 16px; }
+.exp-list { list-style: none; }
+.exp-list li {
+  position: relative; padding-left: 20px; margin-bottom: 10px;
+  font-size: 14px; color: #5a5248; line-height: 1.8;
+}
+.exp-list li::before {
+  content: ''; position: absolute; left: 0; top: 10px;
+  width: 6px; height: 6px; background: var(--clay); border-radius: 50%;
+}
+.exp-list li strong { color: var(--fg); font-weight: 600; }
+.exp-note {
+  margin-top: 16px; padding: 10px 16px; background: var(--secondary);
+  border-radius: 8px; font-size: 12px; color: var(--muted-fg);
+  border-left: 3px solid var(--clay);
+}
 
-  /* Solution */
-  .solution-intro {
-    font-size: 15px;
-    color: #bbb;
-    margin-bottom: 36px;
-    line-height: 1.9;
-  }
-  .solution-steps {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 48px;
-    flex-wrap: wrap;
-  }
-  .solution-step {
-    flex: 1;
-    min-width: 160px;
-    text-align: center;
-    padding: 24px 12px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-  }
-  .solution-step .step-num {
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--accent);
-    margin-bottom: 8px;
-  }
-  .solution-step .step-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-  .solution-step .step-desc { font-size: 12px; color: var(--text2); }
-  .solution-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-    gap: 24px;
-  }
-  .solution-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 28px;
-    transition: border-color 0.3s;
-  }
-  .solution-card:hover { border-color: var(--accent); }
-  .solution-card .card-num {
-    font-size: 13px;
-    color: var(--accent);
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-  .solution-card h4 { font-size: 17px; margin-bottom: 10px; }
-  .solution-card p { font-size: 14px; color: #aaa; line-height: 1.7; }
+/* Portfolio */
+.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 24px; }
+.portfolio-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 32px;
+  transition: box-shadow 0.3s;
+}
+.portfolio-card:hover { box-shadow: 0 4px 24px rgba(120,110,90,0.08); }
+.portfolio-card h3 { font-family: var(--font-serif); font-size: 19px; margin-bottom: 4px; }
+.portfolio-brand-meta { font-size: 13px; color: var(--muted-fg); margin-bottom: 12px; }
+.portfolio-card > p { font-size: 14px; color: #5a5248; margin-bottom: 16px; line-height: 1.8; }
+.portfolio-images { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.portfolio-images figure { text-align: center; }
+.portfolio-images img {
+  width: 100%; height: auto; border-radius: 8px;
+  border: 1px solid var(--border); object-fit: cover; aspect-ratio: 1;
+}
+.portfolio-images figcaption { font-size: 11px; color: var(--muted-fg); margin-top: 6px; }
+.portfolio-cta { margin-top: 40px; text-align: center; }
+.portfolio-cta a {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px; background: var(--clay); color: #fff;
+  text-decoration: none; border-radius: 30px; font-weight: 600; font-size: 15px;
+  transition: background 0.3s, transform 0.2s;
+}
+.portfolio-cta a:hover { background: var(--clay-soft); transform: translateY(-1px); text-decoration: none; }
 
-  /* Education & Skills */
-  .edu-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 32px;
-  }
-  .edu-card h3 { font-size: 18px; margin-bottom: 4px; }
-  .edu-card .edu-meta { font-size: 13px; color: var(--accent2); margin-bottom: 12px; }
-  .edu-card ul { list-style: none; margin-bottom: 20px; }
-  .edu-card ul li {
-    font-size: 14px; color: #bbb; padding-left: 16px;
-    position: relative; margin-bottom: 6px;
-  }
-  .edu-card ul li::before {
-    content: '•'; position: absolute; left: 0; color: var(--accent);
-  }
-  .skill-section { margin-top: 32px; }
-  .skill-section h4 { font-size: 15px; margin-bottom: 12px; }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .skill-tags span {
-    font-size: 13px;
-    padding: 6px 16px;
-    background: var(--tag-bg);
-    color: var(--accent2);
-    border-radius: 20px;
-    font-weight: 500;
-  }
-  .cert-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-  .cert-tags span {
-    font-size: 13px;
-    padding: 6px 16px;
-    background: rgba(0,184,148,0.12);
-    color: var(--green);
-    border-radius: 20px;
-    font-weight: 500;
-  }
+/* Solution */
+.solution-steps {
+  display: flex; justify-content: space-between; gap: 12px;
+  margin-bottom: 32px; flex-wrap: wrap;
+}
+.solution-step {
+  flex: 1; min-width: 140px; text-align: center;
+  padding: 24px 12px; background: var(--card);
+  border: 1px solid var(--border); border-radius: var(--radius);
+}
+.solution-step .step-num {
+  font-size: 28px; font-weight: 800; font-family: var(--font-mono);
+  color: var(--clay); margin-bottom: 6px;
+}
+.solution-step .step-title { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+.solution-step .step-desc { font-size: 11px; color: var(--muted-fg); }
+.solution-diagram { margin: 32px 0; text-align: center; }
+.solution-diagram img { max-width: 100%; border-radius: var(--radius); }
+.solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.solution-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px;
+  transition: box-shadow 0.3s;
+}
+.solution-card:hover { box-shadow: 0 4px 24px rgba(120,110,90,0.08); }
+.solution-card .card-num {
+  font-size: 13px; color: var(--clay); font-family: var(--font-mono);
+  font-weight: 700; margin-bottom: 8px;
+}
+.solution-card h4 { font-size: 16px; margin-bottom: 8px; }
+.solution-card p { font-size: 14px; color: #5a5248; line-height: 1.7; }
 
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 60px 0 40px;
-    color: var(--text2);
-    font-size: 13px;
-  }
+/* Education */
+.edu-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 32px;
+}
+.edu-header { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
+.edu-header img { width: 48px; height: 48px; border-radius: 8px; }
+.edu-card h3 { font-family: var(--font-serif); font-size: 19px; }
+.edu-meta { font-size: 13px; color: var(--clay); margin-bottom: 4px; }
+.edu-date { font-size: 13px; color: var(--muted-fg); margin-bottom: 16px; }
+.edu-list { list-style: none; }
+.edu-list li {
+  font-size: 14px; color: #5a5248; padding-left: 16px;
+  position: relative; margin-bottom: 6px;
+}
+.edu-list li::before { content: '•'; position: absolute; left: 0; color: var(--clay); }
+.skill-section { margin-top: 28px; }
+.skill-section h4 { font-size: 14px; margin-bottom: 12px; font-family: var(--font-sans); display: flex; align-items: center; gap: 8px; }
+.skill-section h4 img { width: 20px; height: 20px; }
+.cert-tags, .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.cert-tags span {
+  font-size: 12px; padding: 5px 14px; background: var(--secondary);
+  color: var(--forest); border-radius: 20px; font-weight: 500;
+}
+.skill-tags span {
+  font-size: 12px; padding: 5px 14px; background: rgba(194,86,46,0.08);
+  color: var(--clay); border-radius: 20px; font-weight: 500;
+}
 
-  /* Responsive */
-  @media (max-width: 768px) {
-    header h1 { font-size: 42px; }
-    .stats { gap: 24px; }
-    .stat-item .num { font-size: 28px; }
-    .portfolio-grid, .solution-grid { grid-template-columns: 1fr; }
-    .solution-steps { flex-direction: column; }
-  }
+/* Footer */
+footer {
+  padding: 60px 0 40px; text-align: center;
+  color: var(--muted-fg); font-size: 13px;
+}
+footer p { margin-bottom: 4px; }
 
-  /* Navigation */
-  .nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    background: rgba(10,10,10,0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-inner {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 56px;
-  }
-  .nav-logo { font-weight: 700; font-size: 16px; color: #fff; text-decoration: none; }
-  .nav-links { display: flex; gap: 24px; }
-  .nav-links a {
-    color: var(--text2);
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: #fff; }
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main-content { margin-left: 0; }
+  .hero h1 { font-size: 48px; }
+  .hero-stats { flex-wrap: wrap; gap: 24px; }
+  .portfolio-grid { grid-template-columns: 1fr; }
+}
 
-  /* Link styles */
-  a { color: var(--accent2); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-
-  .intro-stats {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 12px;
-  }
-  .intro-stats span {
-    font-size: 12px;
-    padding: 4px 10px;
-    background: var(--surface2);
-    color: var(--text2);
-    border-radius: 20px;
-  }
+a { color: var(--clay); text-decoration: none; }
+a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="#" class="nav-logo">朱响</a>
-    <div class="nav-links">
-      <a href="#about">关于</a>
-      <a href="#experience">经历</a>
-      <a href="#portfolio">作品</a>
-      <a href="#solution">方案</a>
-      <a href="#education">教育</a>
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <img src="images/logo_mark_79def1b5.png" alt="Logo" onerror="this.style.display='none'">
+    <div>
+      <div class="name">朱响 / Sonic</div>
+      <div class="sidebar-role">宠物行业产品经理</div>
     </div>
   </div>
-</nav>
+  <p class="sidebar-quote">"我管的不是成分表，是猫家长的信任。"</p>
 
-<header>
-  <div class="container">
-    <p style="font-size:14px;color:var(--text2);margin-bottom:12px;">江南大学食品科学与工程 · 5 年产品经验</p>
+  <nav class="sidebar-nav">
+    <a href="#about">关于我</a>
+    <a href="#experience">工作经历</a>
+    <a href="#portfolio">产品作品集</a>
+    <a href="#solution">产品开发方案</a>
+    <a href="#education">教育与技能</a>
+  </nav>
+
+  <div class="sidebar-contact">
+    <a href="tel:17768345395">
+      <span class="contact-icon">📞</span> 177 6834 5395
+    </a>
+    <a href="https://weixin.qq.com" target="_blank">
+      <span class="contact-icon">💬</span> ZooXerxes
+    </a>
+    <a href="mailto:zx199761@gmail.com">
+      <span class="contact-icon">✉</span> zx199761@gmail.com
+    </a>
+    <a href="petcreate.html">
+      <span class="contact-icon">🔗</span> 透明猫零食计划 · 作品集
+    </a>
+  </div>
+  <div class="sidebar-status">随时到岗 · 现协商离职中</div>
+</aside>
+
+<!-- Main -->
+<div class="main-content">
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <img class="hero-texture" src="images/hero_texture_208036a4.png" alt="" onerror="this.style.display='none'">
+  <div class="container hero-content">
+    <p class="hero-meta">江南大学食品科学与工程 · 5 年产品经验</p>
     <h1>朱响<span>.</span></h1>
-    <p class="subtitle">宠物行业产品经理</p>
-    <p class="tagline">懂食品科学、懂供应链、懂用户信任 —— 为宠物行业带来稀缺的透明与信任。</p>
-    <div class="stats">
-      <div class="stat-item"><div class="num">5年+</div><div class="label">产品经验</div></div>
-      <div class="stat-item"><div class="num">200w+</div><div class="label">操盘单品月 GMV</div></div>
-      <div class="stat-item"><div class="num">4万+</div><div class="label">创业平台用户</div></div>
-      <div class="stat-item"><div class="num">0→1</div><div class="label">品牌全周期落地</div></div>
+    <p class="hero-subtitle">宠物行业产品经理</p>
+    <p class="hero-desc">懂食品科学、懂供应链、懂用户信任 —— 为宠物行业带来稀缺的透明与信任。</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">5年+</div>
+        <div class="hero-stat-label">产品经验</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">200w+</div>
+        <div class="hero-stat-label">操盘单品月 GMV</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">4万+</div>
+        <div class="hero-stat-label">创业平台用户</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">0→1</div>
+        <div class="hero-stat-label">品牌全周期落地</div>
+      </div>
     </div>
   </div>
-</header>
+</section>
 
-<div class="divider container"></div>
+<div class="section-divider"></div>
 
-<section id="about">
+<!-- About -->
+<section id="about" class="section">
   <div class="container">
     <div class="section-num">01</div>
     <h2 class="section-title">关于我</h2>
@@ -416,9 +361,10 @@
   </div>
 </section>
 
-<div class="divider container"></div>
+<div class="section-divider"></div>
 
-<section id="experience">
+<!-- Experience -->
+<section id="experience" class="section">
   <div class="container">
     <div class="section-num">02</div>
     <h2 class="section-title">工作经历</h2>
@@ -431,7 +377,7 @@
         </div>
         <div class="exp-date">2025.05 - 至今</div>
       </div>
-      <div class="exp-meta"><span>品牌孵化</span><span>IP 操盘</span></div>
+      <div class="exp-tags">品牌孵化 · IP 操盘</div>
       <ul class="exp-list">
         <li><strong>「透明猫零食计划」IP 操盘：</strong>针对宠物食品行业「信任洼地」痛点，独立策划并搭建「PM 老王」个人 IP 与推广运营网页，首创「供应链透明化 + 粉丝共创」模式，规划蓄水—爆发—成熟三阶段商业化路径。</li>
         <li><strong>产品创新提案：</strong>深入研究宠物老龄化趋势，撰写《宠物项目创新提案》，提出「全生命周期宠物健康生态系统」理念，规划阶段精准营养、场景强化营养等矩阵式产品线。</li>
@@ -448,7 +394,7 @@
         </div>
         <div class="exp-date">2023.03 - 2025.05</div>
       </div>
-      <div class="exp-meta"><span>创业</span><span>从 0 到 1</span></div>
+      <div class="exp-tags">创业 · 从 0 到 1</div>
       <ul class="exp-list">
         <li><strong>全生命周期管理：</strong>主导「闪卡回收」App 及小程序的规划与开发，完成需求分析—开发—上线全流程，协调技术、设计、推广团队，确保项目按期高质量交付。</li>
         <li><strong>商业化与业务增长：</strong>制定合规流程规避二手交易法律风险，带领 8 人团队优化 ToB 合作模式，推动平台用户自然增长至 4 万+，实现月销售额 500 万+。</li>
@@ -465,7 +411,7 @@
         </div>
         <div class="exp-date">2021.07 - 2022.10</div>
       </div>
-      <div class="exp-meta"><span>大厂</span><span>供应链</span></div>
+      <div class="exp-tags">大厂 · 供应链</div>
       <ul class="exp-list">
         <li><strong>瑞梦迪品牌产品线：</strong>依托集团供应链优势，主导瑞梦迪品牌宠物食品项目开发，落地猫砂、猫条、营养冻干等现售产品，结合市场数据与竞品调研完成配方打样、适口性测试及上市规划。</li>
         <li><strong>供应链与代工厂管理：</strong>负责合作 OEM 工厂的寻源、考察与综合管理，建立严苛的「批批全检」与「溯源管理」标准，把控成本与生产进度。</li>
@@ -482,7 +428,7 @@
         </div>
         <div class="exp-date">2019.07 - 2021.07</div>
       </div>
-      <div class="exp-meta"><span>新锐宠牌</span><span>0 到 1</span></div>
+      <div class="exp-tags">新锐宠牌 · 0 到 1</div>
       <ul class="exp-list">
         <li><strong>喵乎汪也品牌从 0 到 1：</strong>负责品牌定位及产品开发策略，成功落地烘焙主粮、罐头、猫砂等核心产品，并主导品牌小程序、淘宝店搭建。建立 5000+ 会员体系，负责产品月 GMV 达 200w+，累计用户收藏 1 万+。</li>
         <li><strong>供应链寻源与成本管控：</strong>主导寻源、上新、升级、采购等业务链，不断拓展优质供应商，进行产前样评审与成本严格管控。</li>
@@ -492,33 +438,49 @@
   </div>
 </section>
 
-<div class="divider container"></div>
+<div class="section-divider"></div>
 
-<section id="portfolio">
+<!-- Portfolio -->
+<section id="portfolio" class="section">
   <div class="container">
     <div class="section-num">03</div>
     <h2 class="section-title">产品作品集</h2>
-    <p style="color:var(--text2);font-size:14px;margin-bottom:32px;">主导落地的代表性宠物食品产品线，覆盖猫砂、主粮、罐头等多品类。</p>
+    <p style="color:var(--muted-fg);font-size:14px;margin-bottom:32px;">主导落地的代表性宠物食品产品线，覆盖猫砂、主粮、罐头等多品类。</p>
 
     <div class="portfolio-grid">
       <div class="portfolio-card">
         <h3>瑞梦迪 Romod</h3>
-        <p class="brand-meta">雨润集团 · 宠物食品</p>
+        <p class="portfolio-brand-meta">雨润集团 · 宠物食品</p>
         <p>雨润集团旗下宠物食品品牌，依托集团供应链优势，主导猫砂与猫罐头两大核心产品线的开发与上市。</p>
-        <div class="portfolio-tags">
-          <span>5合1木薯混合猫砂 · 全网销量TOP1</span>
-          <span>全价生骨肉主食罐 · 95%动物蛋白</span>
+        <div class="portfolio-images">
+          <figure>
+            <img src="images/romod_litter_new_66801336.png" alt="5合1木薯混合猫砂 · 全网销量TOP1" onerror="this.parentElement.style.display='none'">
+            <figcaption>5合1木薯混合猫砂 · 全网销量TOP1</figcaption>
+          </figure>
+          <figure>
+            <img src="images/romod_can_new_befb9578.png" alt="全价生骨肉主食罐 · 95%动物蛋白" onerror="this.parentElement.style.display='none'">
+            <figcaption>全价生骨肉主食罐 · 95%动物蛋白</figcaption>
+          </figure>
         </div>
       </div>
 
       <div class="portfolio-card">
         <h3>喵乎汪也 Mewoofun</h3>
-        <p class="brand-meta">若态科技 · 新锐宠物品牌</p>
+        <p class="portfolio-brand-meta">若态科技 · 新锐宠物品牌</p>
         <p>从 0 到 1 主导落地的新锐宠物品牌，主营猫砂 / 烘焙主粮 / 罐头 / 宠物家居用品；会员体系 5000+，最高月销 200w+，用户收藏 1 万+。</p>
-        <div class="portfolio-tags">
-          <span>七分鸡全价猫粮 · 低温烘焙</span>
-          <span>超瞬吸除臭植物猫砂</span>
-          <span>全品类产品矩阵</span>
+        <div class="portfolio-images">
+          <figure>
+            <img src="images/mwwy_food_big_15398172.png" alt="七分鸡全价猫粮 · 低温烘焙锁住营养" onerror="this.parentElement.style.display='none'">
+            <figcaption>七分鸡全价猫粮 · 低温烘焙</figcaption>
+          </figure>
+          <figure>
+            <img src="images/mwwy_litter_big_9e4a1eb1.png" alt="超瞬吸除臭植物猫砂" onerror="this.parentElement.style.display='none'">
+            <figcaption>超瞬吸除臭植物猫砂</figcaption>
+          </figure>
+          <figure>
+            <img src="images/mwwy_matrix_row_69d3d5c2.png" alt="全品类产品矩阵" onerror="this.parentElement.style.display='none'">
+            <figcaption>全品类产品矩阵</figcaption>
+          </figure>
         </div>
       </div>
     </div>
@@ -529,13 +491,15 @@
   </div>
 </section>
 
-<div class="divider container"></div>
+<div class="section-divider"></div>
 
-<section id="solution">
+<!-- Solution -->
+<section id="solution" class="section">
   <div class="container">
     <div class="section-num">04</div>
     <h2 class="section-title">产品开发解决方案</h2>
-    <p class="solution-intro">以「透明度」重塑宠物食品的信任 —— 透明猫零食计划。用产品经理（而非研发）的视角切入，主打「原材料从哪来、工厂靠不靠谱、钱花在哪里」全程公开，搭建可被验证的供应链透明化体系，并以粉丝共创将用户从旁观者变为「云合伙人」。</p>
+    <p style="font-size:15px;color:var(--muted-fg);margin-bottom:8px;">以「透明度」重塑宠物食品的信任 —— 透明猫零食计划</p>
+    <p style="font-size:14px;color:#5a5248;margin-bottom:36px;line-height:1.9;max-width:700px;">宠物食品行业最稀缺的不是产品，而是信任。我用产品经理（而非研发）的视角切入，主打「原材料从哪来、工厂靠不靠谱、钱花在哪里」全程公开，搭建可被验证的供应链透明化体系，并以粉丝共创将用户从旁观者变为「云合伙人」。</p>
 
     <div class="solution-steps">
       <div class="solution-step">
@@ -558,6 +522,10 @@
         <div class="step-title">出厂检测</div>
         <div class="step-desc">第三方 28 项批批全检</div>
       </div>
+    </div>
+
+    <div class="solution-diagram">
+      <img src="images/solution_supplychain_6e62db1f.png" alt="供应链透明化体系" onerror="this.style.display='none'">
     </div>
 
     <div class="solution-grid">
@@ -585,24 +553,31 @@
   </div>
 </section>
 
-<div class="divider container"></div>
+<div class="section-divider"></div>
 
-<section id="education">
+<!-- Education -->
+<section id="education" class="section">
   <div class="container">
     <div class="section-num">05</div>
     <h2 class="section-title">教育与技能</h2>
 
     <div class="edu-card">
-      <h3>江南大学</h3>
-      <p class="edu-meta">211 · 双一流学科 · 食品科学与工程 · 2015.09 - 2019.06</p>
-      <ul>
+      <div class="edu-header">
+        <img src="images/logo_mark_79def1b5.png" alt="江南大学" onerror="this.style.display='none'">
+        <div>
+          <h3>江南大学</h3>
+          <p class="edu-meta">211 · 双一流学科</p>
+          <p class="edu-date">食品科学与工程 · 2015.09 - 2019.06</p>
+        </div>
+      </div>
+      <ul class="edu-list">
         <li>全国食品专业 Top1，具备扎实的食品化学、营养学、加工工艺基础。</li>
         <li>参与国家重点实验室「蛋白质结构与功能」课题研究，聚焦膳食纤维乳制品项目。</li>
         <li>扎根一线生产实习（靖江肉脯、全家速食供应商工厂），熟悉食品工厂标准化生产流程。</li>
       </ul>
 
       <div class="skill-section">
-        <h4>证书</h4>
+        <h4>📜 证书</h4>
         <div class="cert-tags">
           <span>NPDP 国际新产品开发专业认证</span>
           <span>CET-4 英语四级</span>
@@ -610,16 +585,11 @@
       </div>
 
       <div class="skill-section">
-        <h4>技能</h4>
+        <h4>🛠 技能</h4>
         <div class="skill-tags">
-          <span>竞品分析</span>
-          <span>数据分析</span>
-          <span>供应链溯源体系搭建</span>
-          <span>OEM 供应链管理</span>
-          <span>私域与社群运营</span>
-          <span>Axure</span>
-          <span>Visio</span>
-          <span>Xmind</span>
+          <span>竞品分析</span><span>数据分析</span><span>供应链溯源体系搭建</span>
+          <span>OEM 供应链管理</span><span>私域与社群运营</span>
+          <span>Axure</span><span>Visio</span><span>Xmind</span>
         </div>
       </div>
     </div>
@@ -628,9 +598,12 @@
 
 <footer>
   <div class="container">
-    <p>朱响 · 宠物行业产品经理 · zx199761</p>
+    <p>期待与你聊聊产品、宠物与信任。</p>
+    <p>177 6834 5395 · ZooXerxes · zx199761@gmail.com</p>
   </div>
 </footer>
+
+</div><!-- /main-content -->
 
 </body>
 </html>
