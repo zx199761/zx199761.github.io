@@ -290,6 +290,25 @@ footer p { margin-bottom: 4px; }
   .portfolio-grid { grid-template-columns: 1fr; }
 }
 
+/* === SCROLL ANIMATIONS === */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* sidebar nav active state */
+.sidebar-nav a.active {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-weight: 600;
+}
+
 a { color: var(--clay); text-decoration: none; }
 a:hover { text-decoration: underline; }
 </style>
@@ -355,7 +374,7 @@ a:hover { text-decoration: underline; }
   <div class="container">
     <div class="section-num">01</div>
     <h2 class="section-title">关于我</h2>
-    <div class="about-text">
+    <div class="about-text reveal">
       <p>江南大学食品科学与工程（211 双一流，专业全国 Top1）科班出身的资深产品经理，具备将食品级研发思维降维应用于宠物行业的专业壁垒。熟悉宠物食品营养学、行业法规及配方工艺，同时是拥有 3 只猫的资深宠物主，能精准捕捉「营养认知鸿沟」与「清洁痛点」等真实用户需求。</p>
       <p>超过 5 年产品生涯，历经「新锐宠牌 → 大型集团 → 独立创业」全周期，具备从需求洞察、OEM 供应链管理到商业化落地的闭环操盘能力。主导多个产品，品牌从0-1覆盖行业内多品类。</p>
     </div>
@@ -370,7 +389,7 @@ a:hover { text-decoration: underline; }
     <div class="section-num">02</div>
     <h2 class="section-title">工作经历</h2>
 
-    <div class="exp-item">
+    <div class="exp-item reveal">
       <div class="exp-header">
         <div>
           <div class="exp-company">独立产品负责人 / 宠物新品牌项目</div>
@@ -386,7 +405,7 @@ a:hover { text-decoration: underline; }
       </ul>
     </div>
 
-    <div class="exp-item">
+    <div class="exp-item reveal">
       <div class="exp-header">
         <div>
           <div class="exp-company">闪卡网络科技有限公司</div>
@@ -402,7 +421,7 @@ a:hover { text-decoration: underline; }
       </ul>
     </div>
 
-    <div class="exp-item">
+    <div class="exp-item reveal">
       <div class="exp-header">
         <div>
           <div class="exp-company">雨润集团</div>
@@ -418,7 +437,7 @@ a:hover { text-decoration: underline; }
       </ul>
     </div>
 
-    <div class="exp-item">
+    <div class="exp-item reveal">
       <div class="exp-header">
         <div>
           <div class="exp-company">若态科技（苏州）有限公司</div>
@@ -446,7 +465,7 @@ a:hover { text-decoration: underline; }
     <p style="color:var(--muted-fg);font-size:14px;margin-bottom:32px;">主导落地的代表性宠物食品产品线，覆盖猫砂、主粮、罐头等多品类。</p>
 
     <div class="portfolio-grid">
-      <div class="portfolio-card">
+      <div class="portfolio-card reveal">
         <h3>瑞梦迪 Romod</h3>
         <p class="portfolio-brand-meta">雨润集团 · 宠物食品</p>
         <p>雨润集团旗下宠物食品品牌，依托集团供应链优势，主导猫砂与猫罐头两大核心产品线的开发与上市。</p>
@@ -462,7 +481,7 @@ a:hover { text-decoration: underline; }
         </div>
       </div>
 
-      <div class="portfolio-card">
+      <div class="portfolio-card reveal">
         <h3>喵乎汪也 Mewoofun</h3>
         <p class="portfolio-brand-meta">若态科技 · 新锐宠物品牌</p>
         <p>从 0 到 1 主导落地的新锐宠物品牌，主营猫砂 / 烘焙主粮 / 罐头 / 宠物家居用品；会员体系 5000+，最高月销 200w+，用户收藏 1 万+。</p>
@@ -491,7 +510,7 @@ a:hover { text-decoration: underline; }
     <p style="font-size:15px;color:var(--muted-fg);margin-bottom:8px;">以「透明度」重塑宠物食品的信任 —— 透明猫零食计划</p>
     <p style="font-size:14px;color:#5a5248;margin-bottom:36px;line-height:1.9;max-width:700px;">宠物食品行业最稀缺的不是产品，而是信任。我用产品经理（而非研发）的视角切入，主打「原材料从哪来、工厂靠不靠谱、钱花在哪里」全程公开，搭建可被验证的供应链透明化体系，并以粉丝共创将用户从旁观者变为「云合伙人」。</p>
 
-    <div class="solution-steps">
+    <div class="solution-steps reveal">
       <div class="solution-step">
         <div class="step-num">01</div>
         <div class="step-title">原料产地</div>
@@ -514,27 +533,27 @@ a:hover { text-decoration: underline; }
       </div>
     </div>
 
-    <div class="solution-diagram">
+    <div class="solution-diagram reveal">
       <img src="images/solution_supplychain_6e62db1f.png" alt="供应链透明化体系" onerror="this.style.display='none'">
     </div>
 
     <div class="solution-grid">
-      <div class="solution-card">
+      <div class="solution-card reveal">
         <div class="card-num">01</div>
         <h4>供应链透明化</h4>
         <p>搭建「原料产地 → 冷链运输 → 工厂生产 → 出厂检测」四节点全链路溯源体系，让每一袋零食都可被验证。</p>
       </div>
-      <div class="solution-card">
+      <div class="solution-card reveal">
         <div class="card-num">02</div>
         <h4>行业洞察 · 教育内容</h4>
         <p>策划「配料表玄机、代工厂秘密、进口粮真相、智商税排行」系列内容，用专业知识做教育式内容营销。</p>
       </div>
-      <div class="solution-card">
+      <div class="solution-card reveal">
         <div class="card-num">03</div>
         <h4>个人 IP 与私域运营</h4>
         <p>从 0 规划蓄水—爆发—成熟三阶段商业化路径，建立云合伙人社群，多平台（公众号 / 抖音 / 小红书）内容矩阵。</p>
       </div>
-      <div class="solution-card">
+      <div class="solution-card reveal">
         <div class="card-num">04</div>
         <h4>品牌从 0 到 1 顶层设计</h4>
         <p>从个人 IP 孵化到「PM 严选」宠物生活方式品牌的完整商业蓝图，含主粮、营养品产品线拓展及供应链对外赋能。</p>
@@ -551,7 +570,7 @@ a:hover { text-decoration: underline; }
     <div class="section-num">05</div>
     <h2 class="section-title">教育与技能</h2>
 
-    <div class="edu-card">
+    <div class="edu-card reveal">
       <div class="edu-header">
         <img src="images/logo_mark_79def1b5.png" alt="江南大学" onerror="this.style.display='none'">
         <div>
@@ -599,5 +618,41 @@ a:hover { text-decoration: underline; }
 
 </div>
 
+<script>
+(function() {
+  /* ── Scroll Reveal + Active Sidebar Nav ── */
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.sidebar-nav a');
+
+  /* ── Reveal observer ── */
+  const revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+
+  revealEls.forEach(function(el) { revealObserver.observe(el); });
+
+  /* ── Active nav observer ── */
+  var observerOptions = { rootMargin: '-10% 0px -70% 0px', threshold: 0 };
+
+  var sectionObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      var id = entry.target.getAttribute('id');
+      navLinks.forEach(function(link) {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+      });
+    });
+  }, observerOptions);
+
+  sections.forEach(function(sec) { sectionObserver.observe(sec); });
+})();
+</script>
 </body>
 </html>
