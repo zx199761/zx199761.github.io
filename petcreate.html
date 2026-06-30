@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PM老王的透明猫零食计划 | 粉丝共创</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --surface2: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #e0e0e0;
+    --text2: #999;
+    --accent: #6c5ce7;
+    --accent2: #a29bfe;
+    --green: #00b894;
+    --orange: #fdcb6e;
+    --pink: #fd79a8;
+    --blue: #74b9ff;
+    --tag-bg: rgba(108,92,231,0.12);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  a { color: var(--accent2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* Nav */
+  .nav {
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 960px; margin:0 auto; padding:0 24px;
+    display: flex; justify-content: space-between; align-items: center; height: 56px;
+  }
+  .nav-logo { font-weight: 700; font-size: 16px; color: #fff; text-decoration: none; }
+  .nav-back { color: var(--text2); font-size: 14px; text-decoration: none; }
+  .nav-back:hover { color: #fff; text-decoration: none; }
+
+  /* Hero */
+  .hero {
+    padding: 120px 0 60px;
+    text-align: center;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 500px;
+    background: radial-gradient(circle, rgba(108,92,231,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    padding: 6px 18px;
+    background: var(--tag-bg);
+    color: var(--accent2);
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+  .hero h1 span {
+    background: linear-gradient(135deg, var(--accent2) 0%, var(--pink) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-subtitle {
+    font-size: 16px;
+    color: #bbb;
+    max-width: 600px;
+    margin: 0 auto 28px;
+    line-height: 1.8;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+  .hero-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--text2);
+  }
+  .hero-meta-item .icon { font-size: 18px; }
+  .btn-primary {
+    display: inline-block;
+    padding: 14px 36px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .btn-primary:hover { background: #7c6ff7; transform: translateY(-1px); text-decoration: none; }
+
+  /* Sections */
+  section { padding: 60px 0; }
+  .section-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  .section-desc {
+    font-size: 15px;
+    color: var(--text2);
+    margin-bottom: 36px;
+    line-height: 1.8;
+  }
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0 auto;
+  }
+
+  /* Progress */
+  .progress-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 32px;
+  }
+  .progress-card h3 { font-size: 16px; margin-bottom: 16px; }
+  .progress-items { display: flex; flex-wrap: wrap; gap: 12px; }
+  .progress-item {
+    flex: 1; min-width: 180px;
+    padding: 16px;
+    background: var(--surface2);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+  }
+  .progress-item .status { color: var(--green); font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+  .progress-item .label { color: var(--text2); font-size: 13px; }
+
+  /* Supply Chain */
+  .chain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+  .chain-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    text-align: center;
+    transition: border-color 0.3s;
+  }
+  .chain-card:hover { border-color: var(--accent); }
+  .chain-num {
+    font-size: 28px; font-weight: 800; color: var(--accent); margin-bottom: 8px;
+  }
+  .chain-card h4 { font-size: 15px; margin-bottom: 6px; }
+  .chain-card .chain-status {
+    font-size: 12px; padding: 3px 10px; border-radius: 12px;
+    background: rgba(0,184,148,0.15); color: var(--green); display: inline-block; margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .chain-card .chain-detail {
+    font-size: 13px; color: var(--text2); line-height: 1.7; margin-bottom: 12px;
+  }
+  .chain-tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+  .chain-tags span {
+    font-size: 11px; padding: 3px 10px; background: var(--tag-bg);
+    color: var(--accent2); border-radius: 12px;
+  }
+
+  /* Quality */
+  .quality-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .quality-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: border-color 0.3s;
+  }
+  .quality-card:hover { border-color: var(--accent); }
+  .quality-card .q-icon { font-size: 28px; margin-bottom: 12px; }
+  .quality-card h4 { font-size: 15px; margin-bottom: 10px; }
+  .quality-card p { font-size: 13px; color: #aaa; line-height: 1.7; }
+
+  /* Vote */
+  .vote-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 24px;
+  }
+  .vote-card h4 { font-size: 16px; margin-bottom: 16px; }
+  .vote-options { display: flex; flex-direction: column; gap: 10px; }
+  .vote-option {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 16px;
+    background: var(--surface2);
+    border-radius: var(--radius-sm);
+  }
+  .vote-option .bar {
+    flex: 1; height: 8px;
+    background: var(--accent); border-radius: 4px;
+  }
+  .vote-option .bar-label { min-width: 70px; font-size: 14px; }
+  .vote-option .bar-votes { font-size: 13px; color: var(--text2); min-width: 50px; text-align: right; }
+
+  /* Comments */
+  .comments { display: flex; flex-direction: column; gap: 14px; }
+  .comment {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+  }
+  .comment .comment-header {
+    display: flex; justify-content: space-between; margin-bottom: 8px;
+  }
+  .comment .comment-name { font-weight: 600; font-size: 14px; }
+  .comment .comment-time { font-size: 12px; color: var(--text2); }
+  .comment .comment-body { font-size: 14px; color: #bbb; margin-bottom: 8px; }
+  .comment .comment-likes { font-size: 12px; color: var(--text2); }
+
+  /* Industry */
+  .insight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .insight-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: border-color 0.3s;
+    cursor: pointer;
+  }
+  .insight-card:hover { border-color: var(--accent); }
+  .insight-card .insight-icon { font-size: 28px; margin-bottom: 10px; }
+  .insight-card h4 { font-size: 15px; margin-bottom: 6px; }
+  .insight-card p { font-size: 13px; color: #aaa; }
+  .insight-card .cta-link { font-size: 13px; color: var(--accent2); margin-top: 12px; display: block; }
+
+  /* Roadmap */
+  .roadmap { display: flex; flex-direction: column; gap: 24px; }
+  .roadmap-phase {
+    display: flex; gap: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    transition: border-color 0.3s;
+  }
+  .roadmap-phase:hover { border-color: var(--accent); }
+  .roadmap-phase-num {
+    font-size: 40px; font-weight: 800; color: var(--accent);
+    min-width: 60px; line-height: 1;
+  }
+  .roadmap-phase-content { flex: 1; }
+  .roadmap-phase-content h4 { font-size: 18px; margin-bottom: 4px; }
+  .roadmap-phase-content .phase-status {
+    font-size: 12px; padding: 2px 10px; border-radius: 12px;
+    display: inline-block; font-weight: 600; margin-bottom: 12px;
+  }
+  .phase-status.active { background: rgba(0,184,148,0.15); color: var(--green); }
+  .phase-status.upcoming { background: rgba(253,203,110,0.15); color: var(--orange); }
+  .phase-status.planned { background: rgba(116,185,255,0.15); color: var(--blue); }
+  .roadmap-phase-content p { font-size: 14px; color: #aaa; margin-bottom: 4px; }
+  .roadmap-progress { margin-top: 12px; }
+  .roadmap-progress .prog-bar {
+    height: 6px; background: var(--surface2); border-radius: 3px; overflow: hidden;
+    margin-bottom: 6px;
+  }
+  .roadmap-progress .prog-fill { height: 100%; background: var(--accent); border-radius: 3px; }
+  .roadmap-progress .prog-label { font-size: 12px; color: var(--text2); }
+
+  /* CTA */
+  .cta-section {
+    text-align: center; padding: 40px 0 80px;
+  }
+  .cta-section .cta-count { font-size: 14px; color: var(--text2); margin-top: 16px; }
+
+  /* Footer */
+  footer {
+    text-align: center; padding: 60px 0 40px;
+    color: var(--text2); font-size: 13px; border-top: 1px solid var(--border);
+  }
+
+  /* Announcement */
+  .announcement {
+    background: rgba(108,92,231,0.08);
+    border: 1px solid rgba(108,92,231,0.2);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 32px;
+    font-size: 14px;
+    color: #bbb;
+    text-align: center;
+  }
+  .announcement strong { color: var(--accent2); }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 32px; }
+    .roadmap-phase { flex-direction: column; }
+    .chain-grid, .quality-grid, .insight-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Section labels */
+  .section-label {
+    font-size: 12px; color: var(--accent); font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">PM老王的透明猫零食计划</a>
+    <a href="index.html" class="nav-back">← 返回简历</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="container">
+    <div class="hero-badge">🐾 粉丝共创计划</div>
+    <h1>一款<span>透明到骨子里</span>的猫零食</h1>
+    <p class="hero-subtitle">不是研发在做，是<strong>产品经理</strong>在做。我管的是原材料从哪来、工厂靠不靠谱、钱花在了哪里。你，是我的云合伙人。</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span class="icon">🐱</span> 3只猫亲测官方</div>
+      <div class="hero-meta-item"><span class="icon">🏭</span> 12+家工厂实地考察</div>
+      <div class="hero-meta-item"><span class="icon">✅</span> 0添加剂透明承诺</div>
+    </div>
+    <a href="#" class="btn-primary">🐾 加入共创计划 · 查看PM日记 →</a>
+  </div>
+</div>
+
+<div class="divider container"></div>
+
+<section>
+  <div class="container">
+    <div class="announcement">
+      🏭 <strong>第3家工厂考察完毕</strong> · 已拒绝 2 家不达标工厂 &nbsp;|&nbsp; 🌿 <strong>原料产地公开：</strong>山东散养鸡胸肉
+    </div>
+    <h3 style="text-align:center;margin-bottom:12px;">从立项到上架，每个决策都公开</h3>
+    <p style="text-align:center;color:var(--text2);font-size:14px;margin-bottom:32px;">产品正式开发启动后，我会在这里记录每一个真实决策。你是我的云合伙人，有权知道一切。</p>
+    <div style="text-align:center;padding:40px;background:var(--surface);border-radius:var(--radius);border:1px dashed var(--border);">
+      <p style="color:var(--text2);font-size:14px;">📝 开发日记即将开始</p>
+      <p style="color:var(--text2);font-size:13px;margin-top:8px;">产品正式立项后，我会在这里记录每一个真实的决策过程。成为云合伙人，第一时间收到更新通知。</p>
+      <a href="#" class="btn-primary" style="display:inline-block;margin-top:20px;">🐾 加入，第一时间获知更新</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider container"></div>
+
+<section>
+  <div class="container">
+    <div class="section-label">🔍 供应链透明化核心竞争壁垒</div>
+    <h2 class="section-title">从农场到你家猫碗，全程可查</h2>
+    <p class="section-desc">点击每个节点，查看我公开的真实数据。透明度即信任，这是我唯一的护城河。</p>
+
+    <div class="chain-grid">
+      <div class="chain-card">
+        <div class="chain-num">01</div>
+        <h4>原料产地</h4>
+        <p style="font-size:13px;color:var(--text2);margin-bottom:6px;">山东散养鸡胸肉</p>
+        <div class="chain-status">已公开</div>
+        <p class="chain-detail">与山东青岛某规模化散养农场直签合同，每批次附带产地证明和兽医检疫证书。拒绝使用冷冻超过6个月的原料。</p>
+        <div class="chain-tags">
+          <span>散养认证</span><span>产地溯源</span><span>批批检测</span>
+        </div>
+      </div>
+      <div class="chain-card">
+        <div class="chain-num">02</div>
+        <h4>冷链运输</h4>
+        <p style="font-size:13px;color:var(--text2);margin-bottom:6px;">全程-18°C冷链</p>
+        <div class="chain-status">已公开</div>
+        <p class="chain-detail">从农场到工厂全程冷链运输，温度传感器实时监控。每批次运输记录可查，拒绝任何中途解冻再冷冻的操作。</p>
+        <div class="chain-tags">
+          <span>-18°C全程</span><span>温度记录</span><span>批次可查</span>
+        </div>
+      </div>
+      <div class="chain-card">
+        <div class="chain-num">03</div>
+        <h4>工厂生产</h4>
+        <p style="font-size:13px;color:var(--text2);margin-bottom:6px;">HACCP认证工厂</p>
+        <div class="chain-status">已公开</div>
+        <p class="chain-detail">合作工厂持有HACCP、ISO22000双认证，独立品控团队，我有权随时飞过去突击检查。已拒绝3家不符合标准的工厂。</p>
+        <div class="chain-tags">
+          <span>HACCP认证</span><span>ISO22000</span><span>随时可查</span>
+        </div>
+      </div>
+      <div class="chain-card">
+        <div class="chain-num">04</div>
+        <h4>出厂检测</h4>
+        <p style="font-size:13px;color:var(--text2);margin-bottom:6px;">第三方检测报告</p>
+        <div class="chain-status" style="background:rgba(253,203,110,0.15);color:var(--orange);">进行中</div>
+        <p class="chain-detail">每批次产品委托第三方权威机构检测，检测报告直接附在产品页面，不做任何选择性展示。包括好的和不那么好的。</p>
+        <div class="chain-tags">
+          <span>第三方检测</span><span>报告公开</span><span>不做筛选</span>
+        </div>
+      </div>
+    </div>
+
+    <p style="text-align:center;font-size:12px;color:var(--text2);margin-top:16px;">💡 所有供应商信息均经脱敏处理后公开，合同原件可向粉丝代表申请查阅</p>
+  </div>
+</section>
+
+<div class="divider container"></div>
+
+<section>
+  <div class="container">
+    <div class="section-label">🏆 品质投入 · 我们的选材标准</div>
+    <h2 class="section-title">每一分投入，都有理由</h2>
+    <p class="section-desc">我们不公开成本数字，但我们公开每一项品质决策背后的标准与理由。</p>
+
+    <div class="quality-grid">
+      <div class="quality-card">
+        <div class="q-icon">🥩</div>
+        <h4>原料溯源 · 只用前20%</h4>
+        <p>与产地农场直签合同，每批次原料经独立第三方感官评级，仅采购评级A级及以上的散养鲜肉。我们会拒绝超过80%的送样原料。</p>
+      </div>
+      <div class="quality-card">
+        <div class="q-icon">🔬</div>
+        <h4>批批全检 · 28项不抽检</h4>
+        <p>行业通行做法是按比例抽检，我们的要求是每批次全检，委托SGS或谱尼测试出具报告。检测报告随产品附上，不做任何筛选展示。</p>
+      </div>
+      <div class="quality-card">
+        <div class="q-icon">🏭</div>
+        <h4>随时可查 · 双认证工厂</h4>
+        <p>考察了12家工厂，最终只与2家建立合作。核心筛选条件只有一条：他们敢不敢让我随时飞过去突击检查，不提前通知。</p>
+      </div>
+      <div class="quality-card">
+        <div class="q-icon">❄️</div>
+        <h4>全程溯源 · -18°C不妥协</h4>
+        <p>从农场到工厂，全程IoT温度传感器实时监控，每批次运输记录存档可查。任何一个环节出现温度异常，整批原料直接报废。</p>
+      </div>
+    </div>
+
+    <p style="text-align:center;color:var(--text2);font-size:12px;margin-top:24px;">以上标准均高于国家强制要求。我们选择这样做，不是因为法规要求，而是因为我们认为这是对的。</p>
+  </div>
+</section>
+
+<div class="divider container"></div>
+
+<section>
+  <div class="container">
+    <div class="section-label">🤝 粉丝共创 · 你是合伙人，不是旁观者</div>
+    <h2 class="section-title">这款零食，是我们一起做的</h2>
+    <p class="section-desc">从口味到包装，从定价到工厂选择，每一个决策都有粉丝的参与。你的投票，直接影响产品的最终形态。</p>
+
+    <div class="vote-card">
+      <h4>你希望第一款是什么口味？</h4>
+      <p style="font-size:12px;color:var(--text2);margin-bottom:16px;">投票结果将直接影响首批产品口味决策</p>
+      <div class="vote-options">
+        <div class="vote-option">
+          <span class="bar-label">🥩 纯鸡胸肉</span>
+          <div class="bar" style="flex:3.42"></div>
+          <span class="bar-votes">342票</span>
+        </div>
+        <div class="vote-option">
+          <span class="bar-label">🐟 三文鱼</span>
+          <div class="bar" style="flex:2.89;background:#74b9ff;"></div>
+          <span class="bar-votes">289票</span>
+        </div>
+        <div class="vote-option">
+          <span class="bar-label">🐠 金枪鱼</span>
+          <div class="bar" style="flex:1.98;background:#fd79a8;"></div>
+          <span class="bar-votes">198票</span>
+        </div>
+        <div class="vote-option">
+          <span class="bar-label">🦆 鸭胸肉</span>
+          <div class="bar" style="flex:1.56;background:#fdcb6e;"></div>
+          <span class="bar-votes">156票</span>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--text2);margin-top:12px;">共 985 人参与投票</p>
+    </div>
+
+    <div class="vote-card">
+      <h4>品牌包装色已确定</h4>
+      <p style="font-size:14px;color:#bbb;">感谢每一位参与过意见征集的粉丝，我们的包装色已经正式定下来了。正式包装图将在产品上线前公布，敬请期待。</p>
+    </div>
+
+    <h4 style="margin-bottom:16px;">粉丝留言墙</h4>
+    <div class="comments">
+      <div class="comment">
+        <div class="comment-header"><span class="comment-name">🐱 橘猫妈妈</span><span class="comment-time">2小时前</span></div>
+        <div class="comment-body">供应链透明化做到这个程度，真的很少见！已经关注很久了，期待上线！</div>
+        <div class="comment-likes">❤ 34</div>
+      </div>
+      <div class="comment">
+        <div class="comment-header"><span class="comment-name">🐾 三猫家庭</span><span class="comment-time">5小时前</span></div>
+        <div class="comment-body">包装难撕的问题我也遇到了，感谢PM老王真的去改了！</div>
+        <div class="comment-likes">❤ 28</div>
+      </div>
+      <div class="comment">
+        <div class="comment-header"><span class="comment-name">🌿 挑剔的猫主</span><span class="comment-time">昨天</span></div>
+        <div class="comment-body">作为食品行业从业者，这个供应链透明度真的做到了行业最高水平。</div>
+        <div class="comment-likes">❤ 67</div>
+      </div>
+      <div class="comment">
+        <div class="comment-header"><span class="comment-name">🎯 理性消费者</span><span class="comment-time">昨天</span></div>
+        <div class="comment-body">批批全检这个标准太难得了，期待产品早日上线！</div>
+        <div class="comment-likes">❤ 45</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider container"></div>
+
+<section>
+  <div class="container">
+    <div class="section-label">🔍 行业挤水分 · 重塑信任系列</div>
+    <h2 class="section-title">宠物食品行业的「潜规则」</h2>
+    <p class="section-desc">利用PM对行业的了解，揭秘国产宠粮的「信任洼地」。点击每张卡片，查看完整分析。</p>
+
+    <div class="insight-grid">
+      <div class="insight-card">
+        <div class="insight-icon">🏷️</div>
+        <h4>配料表玄机</h4>
+        <p>别被「纯肉」骗了 —— 配料表里的「文字游戏」，PM教你看懂</p>
+        <span class="cta-link">点击查看完整分析 →</span>
+      </div>
+      <div class="insight-card">
+        <div class="insight-icon">🏭</div>
+        <h4>代工厂秘密</h4>
+        <p>同一条产线，价格差3倍 —— 大牌代工厂的秘密，PM亲历</p>
+        <span class="cta-link">点击查看完整分析 →</span>
+      </div>
+      <div class="insight-card">
+        <div class="insight-icon">🌍</div>
+        <h4>进口粮真相</h4>
+        <p>进口粮为什么总断货？—— 供应链真相，不是你想的那样</p>
+        <span class="cta-link">点击查看完整分析 →</span>
+      </div>
+      <div class="insight-card">
+        <div class="insight-icon">💰</div>
+        <h4>智商税排行</h4>
+        <p>这几种零食别再买了 —— PM自留清单：哪些是智商税？</p>
+        <span class="cta-link">点击查看完整分析 →</span>
+      </div>
+    </div>
+
+    <p style="text-align:center;font-size:12px;color:var(--text2);margin-top:24px;">📝 以上内容均为个人从业经验和公开资料整理，不针对任何具体品牌。宠物食品行业正在快速进步，透明度是推动行业向好的最有效方式。如有异议，欢迎留言讨论。</p>
+  </div>
+</section>
+
+<div class="divider container"></div>
+
+<section>
+  <div class="container">
+    <div class="section-label">🗺️ 商业化路径 · 从IP到品牌</div>
+    <h2 class="section-title">用IP建立信任，用产品承接流量</h2>
+    <p class="section-desc">三个阶段，清晰的商业化路径。我们现在在蓄水期，你的加入正当时。</p>
+
+    <div class="roadmap">
+      <div class="roadmap-phase">
+        <div class="roadmap-phase-num">01</div>
+        <div class="roadmap-phase-content">
+          <h4>蓄水期</h4>
+          <span class="phase-status active">进行中</span>
+          <p>积累精准粉丝，建立「懂行、靠谱」的人设</p>
+          <p>开启「PM朋友圈」内容矩阵</p>
+          <p>邀请核心粉丝参与包装设计投票</p>
+          <p>发布口味偏好调研，收集真实需求</p>
+          <p>建立云合伙人社群，目标1000人</p>
+          <div class="roadmap-progress">
+            <div class="prog-bar"><div class="prog-fill" style="width:65%"></div></div>
+            <div class="prog-label">云合伙人 1,247 / 2,000 · 65%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="roadmap-phase">
+        <div class="roadmap-phase-num">02</div>
+        <div class="roadmap-phase-content">
+          <h4>爆发期</h4>
+          <span class="phase-status upcoming">即将开始</span>
+          <p>借自研零食上市，完成首次商业闭环</p>
+          <p>推出「透明研发包」，内附原材料来源</p>
+          <p>附检测报告、成本清单全公开</p>
+          <p>云合伙人享首批内测资格</p>
+          <p>直播开箱工厂，实时互动</p>
+        </div>
+      </div>
+
+      <div class="roadmap-phase">
+        <div class="roadmap-phase-num">03</div>
+        <div class="roadmap-phase-content">
+          <h4>成熟期</h4>
+          <span class="phase-status planned">规划中</span>
+          <p>形成品牌口碑，拓展「PM严选」产品矩阵</p>
+          <p>建立「PM严选」宠物生活方式品牌</p>
+          <p>拓展主粮、营养品等产品线</p>
+          <p>开放供应链合作，赋能其他品牌</p>
+          <p>打造宠物食品透明度行业标准</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h3 style="font-size:20px;margin-bottom:12px;">现在加入，是最好的时机</h3>
+    <p style="color:var(--text2);font-size:14px;margin-bottom:24px;">蓄水期的云合伙人，将获得首批产品内测资格和永久粉丝价格</p>
+    <a href="#" class="btn-primary">🐾 立即申请云合伙人</a>
+    <p class="cta-count">目前已有 <strong style="color:var(--accent2);">1,247</strong> 位云合伙人</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>PM老王的透明猫零食计划 · 用透明度重塑信任</p>
+    <p style="margin-top:8px;"><a href="index.html">← 返回简历主页</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
