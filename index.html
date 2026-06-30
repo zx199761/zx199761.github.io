@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <title>朱响 · 宠物行业产品经理简历</title>
-<meta name="description" content="朱响（Sonic）· 宠物行业产品经理 · 江南大学食品科学与工程 · 5年产品经验 · 供应链透明化与品牌从0到1">
+<meta name="description" content="朱响（Sonic）· 宠物行业产品经理 · 江南大学食品科学与工程 · 5年产品经验">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -22,8 +22,6 @@
   --secondary: #efe7d8;
   --muted: #ece4d4;
   --muted-fg: #7a7367;
-  --accent: #3c4a3e;
-  --accent-fg: #fbf7ef;
   --border: #e2d8c6;
   --radius: 12px;
   --font-sans: "Noto Sans SC", system-ui, sans-serif;
@@ -42,7 +40,7 @@ body {
 h1,h2,h3,h4 { font-family: var(--font-serif); }
 .container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
 
-/* Sidebar */
+/* === LEFT SIDEBAR === */
 .sidebar {
   position: fixed; top: 0; left: 0; bottom: 0;
   width: 260px;
@@ -51,38 +49,34 @@ h1,h2,h3,h4 { font-family: var(--font-serif); }
   display: flex; flex-direction: column;
   padding: 40px 28px;
   z-index: 100;
+  overflow-y: auto;
 }
-.sidebar-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
-.sidebar-logo img { width: 40px; height: 40px; border-radius: 50%; }
+.sidebar-logo {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 8px;
+}
+.sidebar-logo img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
 .sidebar-logo .name { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: #fff; }
-.sidebar-role { font-size: 13px; color: #a09888; margin-bottom: 16px; }
-.sidebar-quote { font-size: 12px; color: #7a7265; font-style: italic; margin-bottom: 40px; line-height: 1.6; }
-.sidebar-nav { display: flex; flex-direction: column; gap: 4px; margin-bottom: auto; }
+.sidebar-role { font-size: 13px; color: #a09888; margin-top: 2px; }
+.sidebar-quote { font-size: 12px; color: #7a7265; font-style: italic; margin-bottom: 40px; line-height: 1.6; margin-top: 8px; }
+.sidebar-nav { display: flex; flex-direction: column; gap: 2px; margin-bottom: auto; }
 .sidebar-nav a {
   color: #a09888; text-decoration: none; font-size: 14px;
   padding: 10px 16px; border-radius: 8px; transition: all 0.2s;
-  font-family: var(--font-sans);
 }
-.sidebar-nav a:hover, .sidebar-nav a.active { background: rgba(255,255,255,0.08); color: #fff; }
+.sidebar-nav a:hover, .sidebar-nav a:focus { background: rgba(255,255,255,0.08); color: #fff; }
 .sidebar-contact { margin-top: 32px; display: flex; flex-direction: column; gap: 10px; }
 .sidebar-contact a {
   color: #a09888; text-decoration: none; font-size: 12px;
   display: flex; align-items: center; gap: 8px; transition: color 0.2s;
 }
 .sidebar-contact a:hover { color: #fff; }
-.sidebar-contact .contact-icon { width: 16px; height: 16px; opacity: 0.6; }
-.sidebar-status {
-  margin-top: 16px; font-size: 11px; color: #5a8a5e;
-  display: flex; align-items: center; gap: 6px;
-}
-.sidebar-status::before {
-  content: ''; width: 6px; height: 6px; background: #5a8a5e; border-radius: 50%;
-}
+.sidebar-contact-icon { font-size: 14px; width: 16px; text-align: center; }
 
-/* Main content */
+/* === MAIN CONTENT AREA === */
 .main-content { margin-left: 260px; }
 
-/* Hero section */
+/* === HERO SECTION === */
 .hero {
   min-height: 100vh;
   display: flex; align-items: center;
@@ -97,13 +91,15 @@ h1,h2,h3,h4 { font-family: var(--font-serif); }
   background-size: 6px 6px;
   pointer-events: none;
 }
-.hero-texture {
-  position: absolute; right: -60px; top: 50%; transform: translateY(-50%);
-  width: 480px; height: 480px; opacity: 0.12;
-  pointer-events: none;
+.hero-inner {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; gap: 60px;
 }
-.hero-content { position: relative; z-index: 1; }
-.hero-meta { font-size: 14px; color: var(--muted-fg); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.hero-text { flex: 1; }
+.hero-meta {
+  font-size: 14px; color: var(--muted-fg); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 10px;
+}
 .hero-meta::before { content: ''; display: block; width: 24px; height: 1px; background: var(--clay); }
 .hero h1 {
   font-size: 80px; font-weight: 900; letter-spacing: -2px;
@@ -111,15 +107,41 @@ h1,h2,h3,h4 { font-family: var(--font-serif); }
 }
 .hero h1 span { color: var(--clay); }
 .hero-subtitle { font-size: 20px; color: var(--muted-fg); font-weight: 500; margin-bottom: 16px; }
-.hero-desc { font-size: 15px; color: var(--muted-fg); max-width: 500px; line-height: 1.9; }
+.hero-desc {
+  font-size: 15px; color: #5a5248; max-width: 480px; line-height: 1.9;
+}
 .hero-stats { display: flex; gap: 48px; margin-top: 40px; }
 .hero-stat { text-align: left; }
-.hero-stat-num { font-size: 42px; font-weight: 800; font-family: var(--font-mono); color: var(--clay); line-height: 1; }
+.hero-stat-num {
+  font-size: 42px; font-weight: 800; font-family: var(--font-mono);
+  color: var(--clay); line-height: 1;
+}
 .hero-stat-label { font-size: 13px; color: var(--muted-fg); margin-top: 4px; }
 
-/* Section styles */
+/* Hero photo - right side */
+.hero-photo {
+  flex-shrink: 0;
+  width: 360px; height: 480px;
+  position: relative;
+}
+.hero-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+.hero-photo::after {
+  content: '';
+  position: absolute; top: 12px; left: 12px; right: -12px; bottom: -12px;
+  border: 2px solid var(--clay);
+  border-radius: var(--radius);
+  z-index: -1;
+  opacity: 0.3;
+}
+
+/* === SECTIONS === */
 .section { padding: 80px 0; }
-.section-divider { height: 1px; background: var(--border); margin: 0; }
+.section-divider { height: 1px; background: var(--border); }
 .section-num {
   font-size: 13px; color: var(--clay); font-family: var(--font-mono);
   font-weight: 700; letter-spacing: 2px; margin-bottom: 8px;
@@ -128,18 +150,17 @@ h1,h2,h3,h4 { font-family: var(--font-serif); }
   font-size: 36px; font-weight: 700; margin-bottom: 48px;
   letter-spacing: -0.5px;
 }
+
+/* About */
 .about-text p {
   font-size: 16px; color: #5a5248; line-height: 2; margin-bottom: 20px;
   max-width: 680px;
 }
 
-/* Experience cards */
+/* Experience */
 .exp-item {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 32px;
-  margin-bottom: 20px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 32px; margin-bottom: 20px;
   transition: box-shadow 0.3s;
 }
 .exp-item:hover { box-shadow: 0 4px 24px rgba(120,110,90,0.08); }
@@ -161,11 +182,6 @@ h1,h2,h3,h4 { font-family: var(--font-serif); }
   width: 6px; height: 6px; background: var(--clay); border-radius: 50%;
 }
 .exp-list li strong { color: var(--fg); font-weight: 600; }
-.exp-note {
-  margin-top: 16px; padding: 10px 16px; background: var(--secondary);
-  border-radius: 8px; font-size: 12px; color: var(--muted-fg);
-  border-left: 3px solid var(--clay);
-}
 
 /* Portfolio */
 .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 24px; }
@@ -243,8 +259,7 @@ h1,h2,h3,h4 { font-family: var(--font-serif); }
 }
 .edu-list li::before { content: '•'; position: absolute; left: 0; color: var(--clay); }
 .skill-section { margin-top: 28px; }
-.skill-section h4 { font-size: 14px; margin-bottom: 12px; font-family: var(--font-sans); display: flex; align-items: center; gap: 8px; }
-.skill-section h4 img { width: 20px; height: 20px; }
+.skill-section h4 { font-size: 14px; margin-bottom: 12px; font-family: var(--font-sans); }
 .cert-tags, .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .cert-tags span {
   font-size: 12px; padding: 5px 14px; background: var(--secondary);
@@ -263,11 +278,15 @@ footer {
 footer p { margin-bottom: 4px; }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .sidebar { display: none; }
   .main-content { margin-left: 0; }
+  .hero-inner { flex-direction: column-reverse; text-align: center; }
   .hero h1 { font-size: 48px; }
-  .hero-stats { flex-wrap: wrap; gap: 24px; }
+  .hero-desc { max-width: 100%; }
+  .hero-stats { justify-content: center; flex-wrap: wrap; gap: 24px; }
+  .hero-photo { width: 240px; height: 320px; }
+  .hero-meta::before { display: none; }
   .portfolio-grid { grid-template-columns: 1fr; }
 }
 
@@ -277,10 +296,10 @@ a:hover { text-decoration: underline; }
 </head>
 <body>
 
-<!-- Sidebar -->
+<!-- LEFT SIDEBAR -->
 <aside class="sidebar">
   <div class="sidebar-logo">
-    <img src="images/logo_mark_79def1b5.png" alt="Logo" onerror="this.style.display='none'">
+    <img src="images/logo_mark_79def1b5.png" alt="Sonic logo" onerror="this.style.display='none'">
     <div>
       <div class="name">朱响 / Sonic</div>
       <div class="sidebar-role">宠物行业产品经理</div>
@@ -297,58 +316,41 @@ a:hover { text-decoration: underline; }
   </nav>
 
   <div class="sidebar-contact">
-    <a href="tel:17768345395">
-      <span class="contact-icon">📞</span> 177 6834 5395
-    </a>
-    <a href="https://weixin.qq.com" target="_blank">
-      <span class="contact-icon">💬</span> ZooXerxes
-    </a>
-    <a href="mailto:zx199761@gmail.com">
-      <span class="contact-icon">✉</span> zx199761@gmail.com
-    </a>
-    <a href="petcreate.html">
-      <span class="contact-icon">🔗</span> 透明猫零食计划 · 作品集
-    </a>
+    <a href="tel:17768345395"><span class="sidebar-contact-icon">📞</span> 177 6834 5395</a>
+    <a href="#"><span class="sidebar-contact-icon">💬</span> ZooXerxes</a>
+    <a href="mailto:zx199761@gmail.com"><span class="sidebar-contact-icon">✉</span> zx199761@gmail.com</a>
+    <a href="petcreate.html"><span class="sidebar-contact-icon">🔗</span> 透明猫零食计划 · 作品集</a>
   </div>
-  <div class="sidebar-status">随时到岗 · 现协商离职中</div>
 </aside>
 
-<!-- Main -->
+<!-- RIGHT MAIN CONTENT -->
 <div class="main-content">
 
-<!-- Hero -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <img class="hero-texture" src="images/hero_texture_208036a4.png" alt="" onerror="this.style.display='none'">
-  <div class="container hero-content">
-    <p class="hero-meta">江南大学食品科学与工程 · 5 年产品经验</p>
-    <h1>朱响<span>.</span></h1>
-    <p class="hero-subtitle">宠物行业产品经理</p>
-    <p class="hero-desc">懂食品科学、懂供应链、懂用户信任 —— 为宠物行业带来稀缺的透明与信任。</p>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-num">5年+</div>
-        <div class="hero-stat-label">产品经验</div>
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <p class="hero-meta">江南大学食品科学与工程 · 5 年产品经验</p>
+      <h1>朱响<span>.</span></h1>
+      <p class="hero-subtitle">宠物行业产品经理</p>
+      <p class="hero-desc">懂食品科学、懂供应链、懂用户信任 —— 为宠物行业带来稀缺的透明与信任。</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-num">5年+</div><div class="hero-stat-label">产品经验</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">200w+</div><div class="hero-stat-label">操盘单品月 GMV</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">4万+</div><div class="hero-stat-label">创业平台用户</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">0→1</div><div class="hero-stat-label">品牌全周期落地</div></div>
       </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">200w+</div>
-        <div class="hero-stat-label">操盘单品月 GMV</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">4万+</div>
-        <div class="hero-stat-label">创业平台用户</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">0→1</div>
-        <div class="hero-stat-label">品牌全周期落地</div>
-      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="images/og-preview.png" alt="朱响" onerror="this.parentElement.style.display='none'">
     </div>
   </div>
 </section>
 
 <div class="section-divider"></div>
 
-<!-- About -->
+<!-- ABOUT -->
 <section id="about" class="section">
   <div class="container">
     <div class="section-num">01</div>
@@ -363,7 +365,7 @@ a:hover { text-decoration: underline; }
 
 <div class="section-divider"></div>
 
-<!-- Experience -->
+<!-- EXPERIENCE -->
 <section id="experience" class="section">
   <div class="container">
     <div class="section-num">02</div>
@@ -383,7 +385,6 @@ a:hover { text-decoration: underline; }
         <li><strong>产品创新提案：</strong>深入研究宠物老龄化趋势，撰写《宠物项目创新提案》，提出「全生命周期宠物健康生态系统」理念，规划阶段精准营养、场景强化营养等矩阵式产品线。</li>
         <li><strong>新锐宠物项目孵化：</strong>受邀加入新锐宠物公司参与新项目孵化，负责产品线顶层设计与供应链初步对接。</li>
       </ul>
-      <div class="exp-note">离职说明 · 近期项目因资方停止投入而终止，目前协商离职中。</div>
     </div>
 
     <div class="exp-item">
@@ -400,7 +401,6 @@ a:hover { text-decoration: underline; }
         <li><strong>商业化与业务增长：</strong>制定合规流程规避二手交易法律风险，带领 8 人团队优化 ToB 合作模式，推动平台用户自然增长至 4 万+，实现月销售额 500 万+。</li>
         <li><strong>资源调配与抗压：</strong>作为合伙人统筹全局，在创业高压环境下锻炼了商业敏锐度、成本管控与资源整合能力，沉淀了将商业目标与用户体验深度结合的操盘底蕴。</li>
       </ul>
-      <div class="exp-note">离职说明 · 因个人判断行业天花板有限，主动选择回归宠物 / 食品主赛道。</div>
     </div>
 
     <div class="exp-item">
@@ -417,7 +417,6 @@ a:hover { text-decoration: underline; }
         <li><strong>供应链与代工厂管理：</strong>负责合作 OEM 工厂的寻源、考察与综合管理，建立严苛的「批批全检」与「溯源管理」标准，把控成本与生产进度。</li>
         <li><strong>用户洞察与产品迭代：</strong>建立用户反馈机制，挖掘养宠人群痛点，通过对产品包装、配方适口性的持续迭代，提升用户复购率与品牌信任度。</li>
       </ul>
-      <div class="exp-note">离职说明 · 后因集团破产重组、岗位调动等客观原因离职。</div>
     </div>
 
     <div class="exp-item">
@@ -440,7 +439,7 @@ a:hover { text-decoration: underline; }
 
 <div class="section-divider"></div>
 
-<!-- Portfolio -->
+<!-- PORTFOLIO -->
 <section id="portfolio" class="section">
   <div class="container">
     <div class="section-num">03</div>
@@ -493,7 +492,7 @@ a:hover { text-decoration: underline; }
 
 <div class="section-divider"></div>
 
-<!-- Solution -->
+<!-- SOLUTION -->
 <section id="solution" class="section">
   <div class="container">
     <div class="section-num">04</div>
@@ -555,7 +554,7 @@ a:hover { text-decoration: underline; }
 
 <div class="section-divider"></div>
 
-<!-- Education -->
+<!-- EDUCATION -->
 <section id="education" class="section">
   <div class="container">
     <div class="section-num">05</div>
@@ -603,7 +602,7 @@ a:hover { text-decoration: underline; }
   </div>
 </footer>
 
-</div><!-- /main-content -->
+</div>
 
 </body>
 </html>
