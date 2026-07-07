@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>朱响 · 产品开发作品集</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; background: #33302b; }
+body {
+  font-family: "Noto Sans SC", system-ui, sans-serif;
+  display: flex; flex-direction: column;
+}
+.top-bar {
+  background: #33302b;
+  color: #e9e2d4;
+  padding: 14px 24px;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  flex-shrink: 0;
+}
+.top-bar .title {
+  font-family: "Noto Serif SC", serif;
+  font-size: 16px; font-weight: 700;
+}
+.top-bar .back {
+  color: #c2562e; text-decoration: none;
+  font-size: 14px; font-weight: 500; transition: color 0.2s;
+}
+.top-bar .back:hover { color: #d97b52; }
+.top-bar .hint { font-size: 12px; color: #7a7265; }
+.pdf-container { flex: 1; width: 100%; overflow: hidden; }
+.pdf-container embed { width: 100%; height: 100%; border: none; }
+.fallback {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  color: #e9e2d4; padding: 40px; text-align: center;
+}
+.fallback h2 { font-family: "Noto Serif SC", serif; margin-bottom: 16px; }
+.fallback p { color: #a09888; margin-bottom: 24px; max-width: 400px; line-height: 1.7; }
+.fallback a {
+  display: inline-block; padding: 12px 28px;
+  background: #c2562e; color: #fff; text-decoration: none;
+  border-radius: 30px; font-weight: 600; font-size: 14px; transition: background 0.3s;
+}
+.fallback a:hover { background: #d97b52; }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a href="index.html" class="back">← 返回简历</a>
+  <div class="title">产品开发 PPT 作品集（第5-24页）</div>
+  <div class="hint">滚动查看 · 支持缩放</div>
+</div>
+
+<div class="pdf-container">
+  <embed src="portfolio.pdf#toolbar=1&navpanes=1&scrollbar=1&view=FitH" type="application/pdf" width="100%" height="100%">
+</div>
+
+<noscript>
+<div class="fallback">
+<h2>无法预览 PDF</h2><p>你的浏览器不支持内嵌 PDF 预览，请直接下载查看。</p>
+<a href="portfolio.pdf" download>📥 下载 PDF 文件</a></div>
+</noscript>
+
+<script>window.addEventListener('load',function(){var e=document.querySelector('.pdf-container embed'),t=document.querySelector('.pdf-container');if(e&&t)setTimeout(function(){if(0===e.clientHeight||e.clientHeight<50)t.innerHTML='<div class="fallback"><h2>无法预览 PDF</h2><p>你的浏览器不支持内嵌 PDF 预览，请直接下载查看。</p><a href="portfolio.pdf" download>📥 下载 PDF 文件</a></div>'},1e3)});</script>
+
+</body>
+</html>
