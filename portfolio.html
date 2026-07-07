@@ -3,23 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>朱响 · 产品开发作品集</title>
+<title>朱响 · 产品开发全案</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { height: 100%; background: #33302b; }
+html { scroll-behavior: smooth; }
 body {
+  background: #1a1a1a;
+  color: #e0dcd4;
   font-family: "Noto Sans SC", system-ui, sans-serif;
-  display: flex; flex-direction: column;
 }
 .top-bar {
-  background: #33302b;
-  color: #e9e2d4;
-  padding: 14px 24px;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(26,26,26,0.92);
+  backdrop-filter: blur(12px);
+  padding: 12px 24px;
   display: flex; align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  flex-shrink: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 .top-bar .title {
   font-family: "Noto Serif SC", serif;
@@ -30,43 +30,126 @@ body {
   font-size: 14px; font-weight: 500; transition: color 0.2s;
 }
 .top-bar .back:hover { color: #d97b52; }
-.top-bar .hint { font-size: 12px; color: #7a7265; }
-.pdf-container { flex: 1; width: 100%; overflow: hidden; }
-.pdf-container embed { width: 100%; height: 100%; border: none; }
-.fallback {
-  flex: 1; display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  color: #e9e2d4; padding: 40px; text-align: center;
+.top-bar .counter {
+  font-size: 13px; color: #7a7265;
 }
-.fallback h2 { font-family: "Noto Serif SC", serif; margin-bottom: 16px; }
-.fallback p { color: #a09888; margin-bottom: 24px; max-width: 400px; line-height: 1.7; }
-.fallback a {
-  display: inline-block; padding: 12px 28px;
-  background: #c2562e; color: #fff; text-decoration: none;
-  border-radius: 30px; font-weight: 600; font-size: 14px; transition: background 0.3s;
+.content { padding-top: 56px; }
+.slide {
+  display: flex; flex-direction: column;
+  align-items: center; padding: 32px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
 }
-.fallback a:hover { background: #d97b52; }
+.slide-num {
+  font-size: 13px; color: #c2562e;
+  font-family: "Space Grotesk", monospace;
+  font-weight: 700; margin-bottom: 12px;
+}
+.slide img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  background: #fff;
+}
+.thumb-nav {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(26,26,26,0.92);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 8px 16px;
+  overflow-x: auto;
+  display: flex; gap: 8px;
+  justify-content: center;
+}
+.thumb-nav a {
+  flex-shrink: 0;
+  width: 60px; height: 40px;
+  border-radius: 3px; overflow: hidden;
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
+  display: block;
+}
+.thumb-nav a img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.thumb-nav a:hover,
+.thumb-nav a:focus { border-color: #c2562e; }
+.thumb-nav a.active { border-color: #c2562e; }
+.loading {
+  padding: 40px; text-align: center;
+  color: #7a7265; font-size: 14px;
+}
+.footer-bar {
+  padding: 20px 16px 80px;
+  text-align: center;
+}
+.footer-bar a {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 24px;
+  background: #c2562e; color: #fff;
+  text-decoration: none; border-radius: 30px;
+  font-weight: 600; font-size: 14px;
+  transition: background 0.3s;
+}
+.footer-bar a:hover { background: #d97b52; }
+@media (max-width: 768px) {
+  .slide { padding: 20px 8px; }
+  .thumb-nav a { width: 48px; height: 32px; }
+}
 </style>
 </head>
 <body>
 
 <div class="top-bar">
   <a href="index.html" class="back">← 返回简历</a>
-  <div class="title">产品开发 PPT 作品集（第5-24页）</div>
-  <div class="hint">滚动查看 · 支持缩放</div>
+  <div class="title">产品开发全案</div>
+  <div class="counter">共 20 页</div>
 </div>
 
-<div class="pdf-container">
-  <embed src="portfolio.pdf#toolbar=1&navpanes=1&scrollbar=1&view=FitH" type="application/pdf" width="100%" height="100%">
+<div class="content" id="content">
+  <div class="loading">加载中...</div>
 </div>
 
-<noscript>
-<div class="fallback">
-<h2>无法预览 PDF</h2><p>你的浏览器不支持内嵌 PDF 预览，请直接下载查看。</p>
-<a href="portfolio.pdf" download>📥 下载 PDF 文件</a></div>
-</noscript>
+<div class="thumb-nav" id="thumbNav"></div>
 
-<script>window.addEventListener('load',function(){var e=document.querySelector('.pdf-container embed'),t=document.querySelector('.pdf-container');if(e&&t)setTimeout(function(){if(0===e.clientHeight||e.clientHeight<50)t.innerHTML='<div class="fallback"><h2>无法预览 PDF</h2><p>你的浏览器不支持内嵌 PDF 预览，请直接下载查看。</p><a href="portfolio.pdf" download>📥 下载 PDF 文件</a></div>'},1e3)});</script>
+<div class="footer-bar">
+  <a href="portfolio.pdf" download>📥 下载完整 PDF</a>
+</div>
+
+<script>
+(function() {
+  var totalSlides = 20;
+  var content = document.getElementById('content');
+  var thumbNav = document.getElementById('thumbNav');
+  var html = '';
+  var thumbs = '';
+  for (var i = 1; i <= totalSlides; i++) {
+    var num = (i < 10 ? '0' : '') + i;
+    html += '<div class="slide" id="s' + i + '">';
+    html += '<div class="slide-num">' + i + ' / ' + totalSlides + '</div>';
+    html += '<img src="slide_' + num + '.jpg" alt="第' + i + '页" loading="lazy">';
+    html += '</div>';
+    thumbs += '<a href="#s' + i + '" title="第' + i + '页"><img src="slide_' + num + '.jpg" alt="' + i + '" loading="lazy"></a>';
+  }
+  content.innerHTML = html;
+  thumbNav.innerHTML = thumbs;
+
+  var thumbLinks = thumbNav.querySelectorAll('a');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        thumbLinks.forEach(function(a) { a.classList.remove('active'); });
+        var id = entry.target.id;
+        var active = thumbNav.querySelector('a[href="#' + id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.slide').forEach(function(s) { observer.observe(s); });
+})();
+</script>
 
 </body>
 </html>
